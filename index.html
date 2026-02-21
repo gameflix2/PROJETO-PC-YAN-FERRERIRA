@@ -177,18 +177,10 @@ body {
 }
 
 .top-10-scroll {
-  display: grid;
-
-  /* cards na horizontal infinitos */
-  grid-auto-flow: column;
-
-  /* largura real do card igual imagem */
-  grid-auto-columns: 220px;
-
-  gap: 18px;
+  display: flex;
+  gap: 45px;
   overflow-x: auto;
-  padding: 20px 4px;
-
+  padding: 20px 0;
   scrollbar-width: none;
   scroll-behavior: smooth;
 }
@@ -197,8 +189,8 @@ body {
 
 .card-container {
   position: relative;
-  width: 220px;      /* grid controla largura */
-  height: 320px;     /* altura estilo PlayStation */
+  min-width: 220px;
+  height: 200px;
   display: flex;
   align-items: flex-end;
   cursor: pointer;
@@ -222,11 +214,13 @@ body {
 }
 
 .poster-img {
-  width: 100%;
-  height: 100%;
+  width: 140px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 12px;
-  margin-left: 0;
+  z-index: 2;
+  margin-left: 70px;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .badge-new {
@@ -268,48 +262,6 @@ body {
   .rank-number { font-size: clamp(60px, 25vw, 120px); left: -10px; bottom: -15px; }
   .arrow-left, .arrow-right { width: 30px; height: 50px; font-size: 1.5rem; }
 }
-.arrow-left { left: 5px; }
-.arrow-right { right: 5px; }
-
-/* 👇 COLE AQUI 👇 */
-
-/* ROW normal jogos */
-.games-scroll{
-  display:grid;
-
-  /* 👇 10 cards por coluna */
-  grid-template-rows: repeat(10, 230px);
-
-  /* colunas infinitas */
-  grid-auto-flow: column;
-  grid-auto-columns: 160px;
-
-  gap:14px;
-  overflow-x:auto;
-  padding:20px 0;
-  scroll-behavior:smooth;
-}
-
-.games-scroll::-webkit-scrollbar{
-  display:none;
-}
-
-.games-scroll::-webkit-scrollbar{
-  display:none;
-}
-
-.game-card{
-  width:160px;
-  height:230px;
-  object-fit:cover;
-  border-radius:4px;
-  cursor:pointer;
-  transition:transform .3s;
-}
-
-.game-card:hover{
-  transform:scale(1.08);
-}
 </style>
 </head>
 <body>
@@ -335,7 +287,7 @@ body {
 
 <!-- BANNER -->
 <section class="banner" id="main-banner">
-<video class="banner-video" autoplay muted loop playsinline id="banner-video">
+ <video class="banner-video" autoplay muted loop playsinline>
   <source src="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1771613996/farcry_z2rivm.mp4" type="video/mp4">
 </video>
 
@@ -429,203 +381,7 @@ body {
     <button class="arrow-right" onclick="scrollRight()">›</button>
   </div>
 </div>
-<!-- ROW JOGOS -->
-<div class="row">
-  <h2>JOGOS POPULARES</h2>
 
-  <div class="games-scroll">
-
-    <!-- CARD (repete) -->
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png" class="poster-img"
-    onclick="updateBanner('Grand Theft Auto V','','Explore Los Santos e suas aventuras criminosas épicas.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/a/ad/GTA_5_cover.png"
-    onclick="updateBanner('GTA 5','','Explore Los Santos.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png" class="poster-img"
-    onclick="updateBanner('Grand Theft Auto V','','Explore Los Santos e suas aventuras criminosas épicas.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/a/ad/GTA_5_cover.png"
-    onclick="updateBanner('GTA 5','','Explore Los Santos.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png" class="poster-img"
-    onclick="updateBanner('Grand Theft Auto V','','Explore Los Santos e suas aventuras criminosas épicas.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/a/ad/GTA_5_cover.png"
-    onclick="updateBanner('GTA 5','','Explore Los Santos.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png" class="poster-img"
-    onclick="updateBanner('Grand Theft Auto V','','Explore Los Santos e suas aventuras criminosas épicas.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/a/ad/GTA_5_cover.png"
-    onclick="updateBanner('GTA 5','','Explore Los Santos.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png" class="poster-img"
-    onclick="updateBanner('Grand Theft Auto V','','Explore Los Santos e suas aventuras criminosas épicas.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/a/ad/GTA_5_cover.png"
-    onclick="updateBanner('GTA 5','','Explore Los Santos.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png" class="poster-img"
-    onclick="updateBanner('Grand Theft Auto V','','Explore Los Santos e suas aventuras criminosas épicas.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/a/ad/GTA_5_cover.png"
-    onclick="updateBanner('GTA 5','','Explore Los Santos.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png" class="poster-img"
-    onclick="updateBanner('Grand Theft Auto V','','Explore Los Santos e suas aventuras criminosas épicas.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/a/ad/GTA_5_cover.png"
-    onclick="updateBanner('GTA 5','','Explore Los Santos.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png" class="poster-img"
-    onclick="updateBanner('Grand Theft Auto V','','Explore Los Santos e suas aventuras criminosas épicas.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/a/ad/GTA_5_cover.png"
-    onclick="updateBanner('GTA 5','','Explore Los Santos.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-    
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-    <img class="game-card"
-    src="https://upload.wikimedia.org/wikipedia/en/9/9d/The_Last_of_Us_Part_II.jpg"
-    onclick="updateBanner('The Last of Us 2','','Sobrevivência intensa.')">
-
-
-    <!-- DUPLICA esses cards até dar 50 -->
-    
-  </div>
-</div>
 <script>
 function updateBanner(title,img,desc){
   const bannerTitle = document.getElementById('banner-title');
@@ -636,69 +392,15 @@ function updateBanner(title,img,desc){
 }
 
 const top10 = document.getElementById('top10');
+function scrollLeft(){ top10.scrollBy({left:-top10.clientWidth, behavior:'smooth'}); }
+function scrollRight(){ top10.scrollBy({left:top10.clientWidth, behavior:'smooth'}); }
 
-/* ✅ SCROLL INTELIGENTE (VOLTA FUNCIONA SEMPRE) */
-function scrollLeft(){
-  if(!top10) return;
-  const card = top10.querySelector(".card-container");
-  if(!card) return;
-
-  const scrollAmount = card.offsetWidth + 45;
-
-  top10.scrollBy({
-    left: -scrollAmount * 2,
-    behavior: "smooth"
-  });
-}
-
-function scrollRight(){
-  if(!top10) return;
-  const card = top10.querySelector(".card-container");
-  if(!card) return;
-
-  const scrollAmount = card.offsetWidth + 45;
-
-  top10.scrollBy({
-    left: scrollAmount * 2,
-    behavior: "smooth"
-  });
-}
-
-/* header efeito scroll */
 window.addEventListener('scroll', ()=>{
   const header = document.getElementById('header');
   if(window.scrollY>50) header.style.background = 'rgba(20,20,20,0.95)';
   else header.style.background = 'linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, transparent)';
 });
-
-/* SOM estilo Netflix */
-window.addEventListener("DOMContentLoaded", ()=>{
-
-  const bannerVideo = document.getElementById("banner-video");
-  if(!bannerVideo) return;
-
-  function enableSound(){
-    if(bannerVideo.muted){
-      bannerVideo.muted = false;
-      bannerVideo.volume = 0.5;
-      bannerVideo.play().catch(()=>{});
-    }
-  }
-
-  bannerVideo.addEventListener("mouseenter", enableSound);
-  bannerVideo.addEventListener("touchstart", enableSound, {once:true});
-  document.addEventListener("click", enableSound, {once:true});
-
-});
 </script>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
