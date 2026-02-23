@@ -758,12 +758,21 @@ function openCombo(title, desc){
   titleEl.innerText = title;
   gamesEl.innerHTML = "";
 
-  (combos[title] || []).forEach(g=>{
-    const div = document.createElement("div");
-    div.className="game-card";
-    div.innerText=g;
-    gamesEl.appendChild(div);
-  });
+  (combos[title] || []).forEach(name => {
+
+  const existing = [...document.querySelectorAll(".game-card")]
+    .find(card => {
+      const onclick = card.getAttribute("onclick") || "";
+      const clean = s => s.toLowerCase().replace(/[^a-z0-9]/g,"");
+      return clean(onclick).includes(clean(name));
+    });
+
+  if(existing){
+    const clone = existing.cloneNode(true);
+    gamesEl.appendChild(clone);
+  }
+
+});
 
   modal.style.display="block";
 }
@@ -776,6 +785,7 @@ function closeCombo(){
 </body>
 
 </html>
+
 
 
 
