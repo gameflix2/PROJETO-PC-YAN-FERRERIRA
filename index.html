@@ -385,6 +385,23 @@ body {
   transform: scale(1.1);
   box-shadow: 0 0 20px #ff0000, 0 0 30px #ff3b3b, 0 0 40px #ff3b3b;
 }
+  .floating-btn-container {
+  text-align: center;
+  margin: 40px 0; /* espaçamento acima e abaixo */
+  position: relative;
+  z-index: 10;
+}
+
+/* Efeito de flutuação */
+.netflix-btn {
+  animation: float 2.5s ease-in-out infinite;
+}
+
+/* Keyframes da flutuação */
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.05); }
+}
 </style>
 </head>
 <body>
@@ -426,7 +443,7 @@ body {
 
 <!-- TOP 10 -->
 <div class="row">
-  <h2>MAIS BAIXADOS GAMEFLIX</h2>
+  <h2>VEJA A LISTA DOS TOP 10 JOGOS DA GAMEFLIX</h2>
 
   <div class="top-10-container">
     <button class="arrow-left" onclick="scrollLeft()">‹</button>
@@ -556,7 +573,7 @@ body {
     <button class="arrow-right" onclick="scrollRight()">›</button>
   </div> <!-- FECHA top-10-container -->
 
-  <div style="text-align:center; margin: 20px 0;">
+  <div class="floating-btn-container">
   <button class="netflix-btn">COMPRAR AGORA</button>
 </div>
 </div>
@@ -724,6 +741,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
 </body>
 
 </html>
+
 
 
 
