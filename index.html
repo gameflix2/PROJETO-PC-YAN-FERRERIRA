@@ -427,56 +427,37 @@ body {
 font-size:36px; /* AUMENTA A FRASE */
 }
 
- /* BANNER PROMOCIONAL */
-.promo-banner{
-  margin: 30px 0 10px;
-  padding: 30px;
-  border-radius: 10px;
+ /* CARD PROMOCIONAL – estilo carta */
+.promo-card{
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 28px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #e50914, #ff3b3b);
+  box-shadow: 0 25px 60px rgba(229,9,20,.55);
   text-align: center;
-  background: linear-gradient(135deg, #e50914, #b00610);
-  box-shadow: 0 0 20px rgba(229,9,20,.6);
   position: relative;
 }
 
-.promo-badge{
+.promo-card::before{
+  content:"";
   position:absolute;
-  top:-12px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#000;
-  color:#fff;
-  padding:6px 14px;
-  font-size:13px;
-  border-radius:20px;
-  letter-spacing:1px;
+  inset:0;
+  border-radius:18px;
+  background: radial-gradient(circle at top, rgba(255,255,255,.35), transparent 60%);
+  pointer-events:none;
 }
 
-.promo-banner h3{
+.promo-card h3{
   font-family:'Bebas Neue', sans-serif;
-  font-size:42px;
-  margin:10px 0;
+  font-size:44px;
+  margin:0 0 12px;
 }
 
-.promo-banner p{
-  font-size:20px;
-  margin-bottom:20px;
-}
-
-.promo-btn{
-  padding:16px 50px;
+.promo-card p{
   font-size:22px;
-  font-weight:bold;
-  color:#000;
-  background:#fff;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.promo-btn:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 20px #fff;
+  margin:0;
+  font-weight:500;
 }
 </style>
 </head>
@@ -519,12 +500,18 @@ font-size:36px; /* AUMENTA A FRASE */
 
 <!-- TOP 10 -->
 <div class="row">
-  <!-- BANNER PROMOCIONAL TOP 10 -->
-<div class="promo-banner">
-  <span class="promo-badge">🔥 OFERTA LIMITADA</span>
-  <h3>TOP 10 JOGOS PREMIUM</h3>
-  <p>De <strong>R$149,00</strong> por apenas <strong>R$49,90</strong></p>
-  <button class="promo-btn">COMPRAR AGORA</button>
+  <!-- CARTÃO PROMOCIONAL SEM BOTÃO -->
+<div class="promo-card">
+  <div class="promo-card-content">
+    <span class="promo-tag">OFERTA ESPECIAL</span>
+    <h3>TOP 10 JOGOS PREMIUM</h3>
+    <p class="promo-desc">Pacote exclusivo por tempo limitado</p>
+
+    <div class="promo-price">
+      <span class="old">R$149,00</span>
+      <span class="new">R$49,90</span>
+    </div>
+  </div>
 </div>
   <h2>VEJA A LISTA DOS TOP 10 JOGOS DA GAMEFLIX</h2>
 
@@ -815,6 +802,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
 </body>
 
 </html>
+
 
 
 
