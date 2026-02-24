@@ -204,13 +204,18 @@ body {
 
 .rank-number {
   position: absolute;
-  left: -10px; /* aproxima do poster */
+  left: -10px;
   bottom: -25px;
   font-size: 260px;
   font-weight: 900;
   line-height: 1;
-  color: transparent;
+
+  /* 👇 INTERIOR PRETO */
+  color: #000;
+
+  /* 👇 BORDA CONTINUA IGUAL */
   -webkit-text-stroke: 6px #6a6a6a;
+
   z-index: 1;
   pointer-events: none;
 }
@@ -753,3 +758,4 @@ window.addEventListener("DOMContentLoaded", ()=>{
 </body>
 
 </html>
+
