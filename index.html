@@ -427,6 +427,7 @@ body {
 font-size:36px; /* AUMENTA A FRASE */
 }
 
+}
 </style>
 </head>
 <body>
@@ -470,13 +471,12 @@ font-size:36px; /* AUMENTA A FRASE */
 <div class="row">
   <h2>VEJA A LISTA DOS TOP 10 JOGOS DA GAMEFLIX</h2>
 
- <div class="top-10-container">
-<button class="arrow-left">‹</button>
-<button class="arrow-right">›</button>
+  <div class="top-10-container">
+    <button class="arrow-left" onclick="scrollLeft()">‹</button>
 
-  <div class="top-10-scroll" id="top10">
+    <div class="top-10-scroll" id="top10">
       <!-- 1. Red Dead Redemption 2 -->
-    <div class="card-container">
+      <div class="card-container" onclick="updateBanner(
         'Red Dead Redemption 2',
         'https://upload.wikimedia.org/wikipedia/pt/e/e7/Red_Dead_Redemption_2.png',
         'Crime e ação em um enredo envolvente de irmandade.',
@@ -488,7 +488,7 @@ font-size:36px; /* AUMENTA A FRASE */
       </div>
 
       <!-- 2. God of War Ragnarok -->
-     <div class="card-container">
+      <div class="card-container" onclick="updateBanner(
         'God of War Ragnarok',
         'https://upload.wikimedia.org/wikipedia/en/a/a7/God-of-War-Ragnarok.jpg',
         'Kratos e Atreus enfrentam novos desafios nórdicos.',
@@ -501,7 +501,7 @@ font-size:36px; /* AUMENTA A FRASE */
 
       <!-- 3. FIFA 26 -->
       <!-- 3. FIFA 26 -->
-     <div class="card-container">
+      <div class="card-container" onclick="updateBanner(
         'FIFA 26',
         'https://upload.wikimedia.org/wikipedia/en/thumb/2/2f/FIFA_26_cover.jpg/220px-FIFA_26_cover.jpg',
         'O futebol mais realista agora com modos renovados.',
@@ -513,7 +513,7 @@ font-size:36px; /* AUMENTA A FRASE */
       </div>
 
       <!-- 4. Forza Horizon 6 -->
-    <div class="card-container">
+      <div class="card-container" onclick="updateBanner(
         'Forza Horizon 6',
         'https://upload.wikimedia.org/wikipedia/en/2/2b/Forza_Horizon_6_cover.jpg',
         'Corridas insanas e mundos abertos de tirar o fôlego.',
@@ -525,7 +525,7 @@ font-size:36px; /* AUMENTA A FRASE */
       </div>
 
       <!-- 5. Battlefield 6 -->
-     <div class="card-container">
+      <div class="card-container" onclick="updateBanner(
         'Battlefield 6',
         'https://upload.wikimedia.org/wikipedia/en/4/43/Battlefield_6_cover.jpg',
         'Ação militar épica em grandes campos de batalha.',
@@ -537,7 +537,7 @@ font-size:36px; /* AUMENTA A FRASE */
       </div>
 
       <!-- 6. Uncharted 4 -->
-      <<div class="card-container">
+      <div class="card-container" onclick="updateBanner(
         'Uncharted 4',
         'https://upload.wikimedia.org/wikipedia/en/f/fd/Uncharted_4_box_art.jpg',
         'A aventura de Nathan Drake continua em busca de tesouros perdidos.',
@@ -549,7 +549,7 @@ font-size:36px; /* AUMENTA A FRASE */
       </div>
 
       <!-- 7. Call of Duty: Modern Warfare 2 -->
-     <div class="card-container">
+      <div class="card-container" onclick="updateBanner(
         'Call of Duty: Modern Warfare 2',
         'https://upload.wikimedia.org/wikipedia/en/9/9c/Call_of_Duty_Modern_Warfare_2_cover.jpg',
         'Combate moderno e intenso em campanhas cinematográficas.',
@@ -561,7 +561,7 @@ font-size:36px; /* AUMENTA A FRASE */
       </div>
 
       <!-- 8. GTA 5 -->
-   <div class="card-container">
+      <div class="card-container" onclick="updateBanner(
         'GTA 5',
         'https://bdjogos.com.br/capas/6265-the-witcher-3-wild-hunt-capa-1.jpg',
         'Explore Los Santos e suas aventuras criminosas épicas.',
@@ -572,7 +572,7 @@ font-size:36px; /* AUMENTA A FRASE */
       </div>
 
       <!-- 9. Spider-Man 2 -->
-    <div class="card-container">
+      <div class="card-container" onclick="updateBanner(
         'Spider-Man 2',
         'https://cdn1.epicgames.com/offer/b2818b59c0bb420e9647983dfd254931/EGS_MarvelsSpiderManDigitalDeluxeEdition_InsomniacGamesNixxesSoftware_Editions_S2_1200x1600-148e0014e79aa7c2cb23ae2414b11a16',
         'Peter Parker retorna em novas aventuras pela cidade.',
@@ -584,7 +584,7 @@ font-size:36px; /* AUMENTA A FRASE */
       </div>
 
       <!-- 10. The Last of Us 2 -->
-     <div class="card-container">
+      <div class="card-container" onclick="updateBanner(
         'The Last of Us 2',
         'https://m.media-amazon.com/images/M/MV5BODIwYWZmYWMtYTliNC00YWQ5LTg5ZmEtNTZhNmUxNjdiMzNiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
         'Uma história intensa de sobrevivência e emoções profundas.',
@@ -595,17 +595,21 @@ font-size:36px; /* AUMENTA A FRASE */
         <div class="badge-new">Novidade</div>
       </div>
 
-   </div> <!-- FECHA top-10-scroll -->
+    </div> <!-- FECHA top-10-scroll -->
 
     <div class="faixa-destaque">
 LEVE ESSES 10 ÍCONES DO MUNDO DOS GAMES DE R$149,00 por APENAS R$49,90 
 </div>
     
-    
-</div> <!-- FECHA top-10-container -->
+    <button class="arrow-right" onclick="scrollRight()">›</button>
+  </div> <!-- FECHA top-10-container -->
 
   <div class="floating-btn-container">
   <button class="netflix-btn">COMPRAR AGORA</button>
+</div>
+</div>
+  <div class="faixa-destaque">
+             
 </div>
 
 
@@ -657,7 +661,7 @@ LEVE ESSES 10 ÍCONES DO MUNDO DOS GAMES DE R$149,00 por APENAS R$49,90
    <div class="faixa-destaque">
 LEVE ESSES 10 ÍCONES DO MUNDO DOS GAMES DE 149,00 por 49,90 — POR TEMPO LIMITADO
 </div>
-  
+    <button class="arrow-right" onclick="scrollRight()">›</button>
   </div> <!-- FECHA top-10-container -->
 
   <div class="floating-btn-container">
@@ -673,57 +677,86 @@ LEVE ESSES 10 ÍCONES DO MUNDO DOS GAMES DE 149,00 por 49,90 — POR TEMPO LIMIT
   </div>
 </div>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+function updateBanner(title, img, desc, trailerLink=null){
+  const bannerTitle = document.getElementById('banner-title');
+  const bannerDesc = document.getElementById('banner-desc');
+  const bannerVideo = document.getElementById('banner-video');
 
-  const top10 = document.getElementById('top10');
-  const container = document.querySelector('.top-10-container');
-  const arrowLeft = container.querySelector('.arrow-left');
-  const arrowRight = container.querySelector('.arrow-right');
+  bannerTitle.textContent = title;
+  bannerDesc.textContent = desc;
 
-  if (!top10 || !arrowLeft || !arrowRight) {
-    console.error('Top10 ou setas não encontradas');
-    return;
+  if(trailerLink && bannerVideo){
+    bannerVideo.src = trailerLink;
+    bannerVideo.muted = true;
+    bannerVideo.play().catch(()=>{});
   }
 
-  function getScrollAmount() {
-    const card = top10.querySelector('.card-container');
-    const gap = 45;
-    return card ? card.offsetWidth + gap : 300;
-  }
+  // Sobe a tela suavemente
+  window.scrollTo({top:0, behavior:'smooth'});
+}
 
-  arrowLeft.addEventListener('click', () => {
-    top10.scrollBy({
-      left: -getScrollAmount(),
-      behavior: 'smooth'
-    });
+const top10 = document.getElementById('top10');
+
+/* ✅ SCROLL INTELIGENTE (VOLTA FUNCIONA SEMPRE) */
+function scrollLeft(){
+  if(!top10) return;
+  const card = top10.querySelector(".card-container");
+  if(!card) return;
+
+  const scrollAmount = card.offsetWidth + 45;
+
+  top10.scrollBy({
+    left: -scrollAmount * 2,
+    behavior: "smooth"
   });
+}
 
-  arrowRight.addEventListener('click', () => {
-    top10.scrollBy({
-      left: getScrollAmount(),
-      behavior: 'smooth'
-    });
+function scrollRight(){
+  if(!top10) return;
+  const card = top10.querySelector(".card-container");
+  if(!card) return;
+
+  const scrollAmount = card.offsetWidth + 45;
+
+  top10.scrollBy({
+    left: scrollAmount * 2,
+    behavior: "smooth"
   });
+}
 
-  function updateArrows() {
-    const maxScroll = top10.scrollWidth - top10.clientWidth;
+/* header efeito scroll */
+window.addEventListener('scroll', ()=>{
+  const header = document.getElementById('header');
+  if(window.scrollY>50) header.style.background = 'rgba(20,20,20,0.95)';
+  else header.style.background = 'linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, transparent)';
+});
 
-    arrowLeft.style.display =
-      top10.scrollLeft <= 10 ? 'none' : 'flex';
+/* SOM estilo Netflix */
+window.addEventListener("DOMContentLoaded", ()=>{
 
-    arrowRight.style.display =
-      top10.scrollLeft >= maxScroll - 10 ? 'none' : 'flex';
+  const bannerVideo = document.getElementById("banner-video");
+  if(!bannerVideo) return;
+
+  function enableSound(){
+    if(bannerVideo.muted){
+      bannerVideo.muted = false;
+      bannerVideo.volume = 0.5;
+      bannerVideo.play().catch(()=>{});
+    }
   }
 
-  top10.addEventListener('scroll', updateArrows);
-  updateArrows();
+  bannerVideo.addEventListener("mouseenter", enableSound);
+  bannerVideo.addEventListener("touchstart", enableSound, {once:true});
+  document.addEventListener("click", enableSound, {once:true});
 
 });
+  function openCombo(title, desc){
+  updateBanner(title, null, desc);
+}
 </script>
 
 </body>
 
 </html>
-
 
 
