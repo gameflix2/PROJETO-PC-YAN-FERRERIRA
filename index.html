@@ -441,6 +441,67 @@ font-size:36px; /* AUMENTA A FRASE */
   height: auto;
   border-radius: 8px;
 }
+  /* ===== MODAL NETFLIX STYLE ===== */
+.netflix-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.netflix-modal.active {
+  display: flex;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 900px;
+  background: #141414;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+  animation: modalFade .3s ease;
+}
+
+@keyframes modalFade {
+  from { transform: scale(.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-video {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  background: #000;
+}
+
+.modal-info {
+  padding: 20px;
+}
+
+.modal-info h2 {
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+.modal-info p {
+  color: #ccc;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
+}
 </style>
 </head>
 <body>
@@ -772,11 +833,54 @@ window.addEventListener("DOMContentLoaded", ()=>{
   function openCombo(title, desc){
   updateBanner(title, null, desc);
 }
-</script>
+  function openModal(title, desc, trailer){
+  const modal = document.getElementById("netflixModal");
+  const video = document.getElementById("modalVideo");
 
+  document.getElementById("modalTitle").textContent = title;
+  document.getElementById("modalDesc").textContent = desc;
+
+  video.src = trailer;
+  video.currentTime = 0;
+  video.play().catch(()=>{});
+
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal(){
+  const modal = document.getElementById("netflixModal");
+  const video = document.getElementById("modalVideo");
+
+  video.pause();
+  video.src = "";
+
+  modal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+/* fecha clicando fora */
+document.getElementById("netflixModal").addEventListener("click", e=>{
+  if(e.target.id === "netflixModal") closeModal();
+});
+</script>
+<!-- MODAL NETFLIX -->
+<div class="netflix-modal" id="netflixModal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal()">×</span>
+
+    <video id="modalVideo" class="modal-video" controls autoplay muted></video>
+
+    <div class="modal-info">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>
+
 
 
 
