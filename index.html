@@ -427,7 +427,6 @@ body {
 font-size:36px; /* AUMENTA A FRASE */
 }
 
-}
 </style>
 </head>
 <body>
@@ -471,10 +470,11 @@ font-size:36px; /* AUMENTA A FRASE */
 <div class="row">
   <h2>VEJA A LISTA DOS TOP 10 JOGOS DA GAMEFLIX</h2>
 
-  <div class="top-10-container">
-    <button class="arrow-left" onclick="scrollLeft()">‹</button>
+ <div class="top-10-container">
+  <button class="arrow-left" onclick="scrollLeft()">‹</button>
+  <button class="arrow-right" onclick="scrollRight()">›</button>
 
-    <div class="top-10-scroll" id="top10">
+  <div class="top-10-scroll" id="top10">
       <!-- 1. Red Dead Redemption 2 -->
       <div class="card-container" onclick="updateBanner(
         'Red Dead Redemption 2',
@@ -595,21 +595,17 @@ font-size:36px; /* AUMENTA A FRASE */
         <div class="badge-new">Novidade</div>
       </div>
 
-    </div> <!-- FECHA top-10-scroll -->
+   </div> <!-- FECHA top-10-scroll -->
 
     <div class="faixa-destaque">
 LEVE ESSES 10 ÍCONES DO MUNDO DOS GAMES DE R$149,00 por APENAS R$49,90 
 </div>
     
-    <button class="arrow-right" onclick="scrollRight()">›</button>
-  </div> <!-- FECHA top-10-container -->
+    
+</div> <!-- FECHA top-10-container -->
 
   <div class="floating-btn-container">
   <button class="netflix-btn">COMPRAR AGORA</button>
-</div>
-</div>
-  <div class="faixa-destaque">
-             
 </div>
 
 
@@ -661,7 +657,7 @@ LEVE ESSES 10 ÍCONES DO MUNDO DOS GAMES DE R$149,00 por APENAS R$49,90
    <div class="faixa-destaque">
 LEVE ESSES 10 ÍCONES DO MUNDO DOS GAMES DE 149,00 por 49,90 — POR TEMPO LIMITADO
 </div>
-    <button class="arrow-right" onclick="scrollRight()">›</button>
+  
   </div> <!-- FECHA top-10-container -->
 
   <div class="floating-btn-container">
@@ -677,85 +673,90 @@ LEVE ESSES 10 ÍCONES DO MUNDO DOS GAMES DE 149,00 por 49,90 — POR TEMPO LIMIT
   </div>
 </div>
 <script>
-function updateBanner(title, img, desc, trailerLink=null){
+/* =========================
+   ELEMENTOS
+========================= */
+const top10 = document.getElementById('top10');
+const container = document.querySelector('.top-10-container');
+
+if (!top10 || !container) {
+  console.error('Top 10 ou container não encontrado');
+}
+
+const arrowLeft = container.querySelector('.arrow-left');
+const arrowRight = container.querySelector('.arrow-right');
+
+/* =========================
+   SCROLL PARA ESQUERDA
+========================= */
+function scrollLeft() {
+  const card = top10.querySelector('.card-container');
+  if (!card) return;
+
+  const gap = 45;
+  const scrollAmount = card.offsetWidth + gap;
+
+  top10.scrollBy({
+    left: -scrollAmount,
+    behavior: 'smooth'
+  });
+}
+
+/* =========================
+   SCROLL PARA DIREITA
+========================= */
+function scrollRight() {
+  const card = top10.querySelector('.card-container');
+  if (!card) return;
+
+  const gap = 45;
+  const scrollAmount = card.offsetWidth + gap;
+
+  top10.scrollBy({
+    left: scrollAmount,
+    behavior: 'smooth'
+  });
+}
+
+/* =========================
+   CONTROLE DAS SETAS
+========================= */
+function updateArrows() {
+  const maxScroll = top10.scrollWidth - top10.clientWidth;
+
+  arrowLeft.style.display =
+    top10.scrollLeft <= 10 ? 'none' : 'flex';
+
+  arrowRight.style.display =
+    top10.scrollLeft >= maxScroll - 10 ? 'none' : 'flex';
+}
+
+top10.addEventListener('scroll', updateArrows);
+window.addEventListener('load', updateArrows);
+
+/* =========================
+   ATUALIZA BANNER
+========================= */
+function updateBanner(title, image, desc, video) {
   const bannerTitle = document.getElementById('banner-title');
   const bannerDesc = document.getElementById('banner-desc');
   const bannerVideo = document.getElementById('banner-video');
 
+  if (!bannerTitle || !bannerDesc || !bannerVideo) return;
+
   bannerTitle.textContent = title;
   bannerDesc.textContent = desc;
 
-  if(trailerLink && bannerVideo){
-    bannerVideo.src = trailerLink;
-    bannerVideo.muted = true;
-    bannerVideo.play().catch(()=>{});
+  if (video) {
+    bannerVideo.src = video;
+    bannerVideo.load();
+    bannerVideo.play();
   }
-
-  // Sobe a tela suavemente
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-const top10 = document.getElementById('top10');
-
-/* ✅ SCROLL INTELIGENTE (VOLTA FUNCIONA SEMPRE) */
-function scrollLeft(){
-  if(!top10) return;
-  const card = top10.querySelector(".card-container");
-  if(!card) return;
-
-  const scrollAmount = card.offsetWidth + 45;
-
-  top10.scrollBy({
-    left: -scrollAmount * 2,
-    behavior: "smooth"
-  });
-}
-
-function scrollRight(){
-  if(!top10) return;
-  const card = top10.querySelector(".card-container");
-  if(!card) return;
-
-  const scrollAmount = card.offsetWidth + 45;
-
-  top10.scrollBy({
-    left: scrollAmount * 2,
-    behavior: "smooth"
-  });
-}
-
-/* header efeito scroll */
-window.addEventListener('scroll', ()=>{
-  const header = document.getElementById('header');
-  if(window.scrollY>50) header.style.background = 'rgba(20,20,20,0.95)';
-  else header.style.background = 'linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, transparent)';
-});
-
-/* SOM estilo Netflix */
-window.addEventListener("DOMContentLoaded", ()=>{
-
-  const bannerVideo = document.getElementById("banner-video");
-  if(!bannerVideo) return;
-
-  function enableSound(){
-    if(bannerVideo.muted){
-      bannerVideo.muted = false;
-      bannerVideo.volume = 0.5;
-      bannerVideo.play().catch(()=>{});
-    }
-  }
-
-  bannerVideo.addEventListener("mouseenter", enableSound);
-  bannerVideo.addEventListener("touchstart", enableSound, {once:true});
-  document.addEventListener("click", enableSound, {once:true});
-
-});
-  function openCombo(title, desc){
-  updateBanner(title, null, desc);
 }
 </script>
 
 </body>
 
 </html>
+
 
