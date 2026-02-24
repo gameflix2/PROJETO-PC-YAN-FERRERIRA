@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pt-BR">
 <head>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -75,6 +75,41 @@ body {
   right: 18px;
   font-size: 30px;
   cursor: pointer;
+}
+  /* ===== MODAL NETFLIX ===== */
+.netflix-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+.netflix-modal.active{display:flex;}
+.modal-content{
+  width:90%;
+  max-width:900px;
+  background:#141414;
+  border-radius:8px;
+  overflow:hidden;
+  position:relative;
+}
+.modal-video{
+  width:100%;
+  height:480px;
+  background:#000;
+  object-fit:cover;
+}
+.modal-info{padding:20px;}
+.modal-info h2{margin:0 0 10px;}
+.modal-info p{color:#ccc;}
+.modal-close{
+  position:absolute;
+  top:12px;
+  right:18px;
+  font-size:30px;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -332,38 +367,93 @@ LEVE ESSES 10 ÍCONES DO MUNDO DOS GAMES DE 149,00 por 49,90 — POR TEMPO LIMIT
   </div>
 </div>
 <script>
-function updateBanner(title, img, desc, trailerLink=null){
-  const bannerTitle = document.getElementById('banner-title');
-  const bannerDesc = document.getElementById('banner-desc');
-  const bannerVideo = document.getElementById('banner-video');
+/* =====================================================
+   BANNER PRINCIPAL (continua funcionando normalmente)
+   — usado só para botões e combos, NÃO para cards
+===================================================== */
+function updateBanner(title, img, desc, trailer = null){
+  const bannerTitle = document.getElementById("banner-title");
+  const bannerDesc  = document.getElementById("banner-desc");
+  const bannerVideo = document.getElementById("banner-video");
 
-  bannerTitle.textContent = title;
-  bannerDesc.textContent = desc;
+  if(bannerTitle) bannerTitle.textContent = title;
+  if(bannerDesc)  bannerDesc.textContent  = desc;
 
-  if(trailerLink && bannerVideo){
-    bannerVideo.src = trailerLink;
+  if(trailer && bannerVideo){
+    bannerVideo.src = trailer;
     bannerVideo.muted = true;
     bannerVideo.play().catch(()=>{});
   }
-
-  // Sobe a tela suavemente
-  window.scrollTo({top:0, behavior:'smooth'});
 }
 
-const top10 = document.getElementById('top10');
+/* =====================================================
+   MODAL ESTILO NETFLIX (ÚNICO / DEFINITIVO)
+===================================================== */
+function openModal(title, desc, trailer){
+  const modal = document.getElementById("netflixModal");
+  const video = document.getElementById("modalVideo");
 
-/* ✅ SCROLL INTELIGENTE (VOLTA FUNCIONA SEMPRE) */
+  document.getElementById("modalTitle").textContent = title;
+  document.getElementById("modalDesc").textContent  = desc;
+
+  video.src = trailer;
+  video.currentTime = 0;
+  video.play().catch(()=>{});
+
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal(){
+  const modal = document.getElementById("netflixModal");
+  const video = document.getElementById("modalVideo");
+
+  video.pause();
+  video.src = "";
+
+  modal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+/* fecha clicando fora */
+document.addEventListener("click", e=>{
+  if(e.target && e.target.id === "netflixModal"){
+    closeModal();
+  }
+});
+
+/* =====================================================
+   CARDS — COMPORTAMENTO FINAL
+   ❌ não sobe a página
+   ❌ não muda banner
+   ✅ abre popup Netflix
+===================================================== */
+document.querySelectorAll(".card-container, .game-card").forEach(card => {
+  /* remove qualquer onclick antigo do HTML */
+  card.removeAttribute("onclick");
+
+  /* adiciona comportamento Netflix */
+  card.addEventListener("click", () => {
+    openModal(
+      "Jogo Gameflix",
+      "Assista ao trailer completo e veja detalhes deste jogo.",
+      "https://res.cloudinary.com/dlt1gqwnc/video/upload/v1771613996/farcry_z2rivm.mp4"
+    );
+  });
+});
+
+/* =====================================================
+   SCROLL DO TOP 10 (mantido)
+===================================================== */
+const top10 = document.getElementById("top10");
+
 function scrollLeft(){
   if(!top10) return;
   const card = top10.querySelector(".card-container");
   if(!card) return;
 
   const scrollAmount = card.offsetWidth + 45;
-
-  top10.scrollBy({
-    left: -scrollAmount * 2,
-    behavior: "smooth"
-  });
+  top10.scrollBy({ left: -scrollAmount * 2, behavior: "smooth" });
 }
 
 function scrollRight(){
@@ -372,23 +462,28 @@ function scrollRight(){
   if(!card) return;
 
   const scrollAmount = card.offsetWidth + 45;
-
-  top10.scrollBy({
-    left: scrollAmount * 2,
-    behavior: "smooth"
-  });
+  top10.scrollBy({ left: scrollAmount * 2, behavior: "smooth" });
 }
 
-/* header efeito scroll */
-window.addEventListener('scroll', ()=>{
-  const header = document.getElementById('header');
-  if(window.scrollY>50) header.style.background = 'rgba(20,20,20,0.95)';
-  else header.style.background = 'linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, transparent)';
+/* =====================================================
+   HEADER EFEITO SCROLL (mantido)
+===================================================== */
+window.addEventListener("scroll", ()=>{
+  const header = document.getElementById("header");
+  if(!header) return;
+
+  if(window.scrollY > 50){
+    header.style.background = "rgba(20,20,20,0.95)";
+  } else {
+    header.style.background =
+      "linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, transparent)";
+  }
 });
 
-/* SOM estilo Netflix */
+/* =====================================================
+   SOM ESTILO NETFLIX NO BANNER
+===================================================== */
 window.addEventListener("DOMContentLoaded", ()=>{
-
   const bannerVideo = document.getElementById("banner-video");
   if(!bannerVideo) return;
 
@@ -401,58 +496,10 @@ window.addEventListener("DOMContentLoaded", ()=>{
   }
 
   bannerVideo.addEventListener("mouseenter", enableSound);
-  bannerVideo.addEventListener("touchstart", enableSound, {once:true});
-  document.addEventListener("click", enableSound, {once:true});
-
+  bannerVideo.addEventListener("touchstart", enableSound, { once:true });
+  document.addEventListener("click", enableSound, { once:true });
 });
-  function openCombo(title, desc){
-  updateBanner(title, null, desc);
-}
-  function openModal(title, desc, trailer){
-  const modal = document.getElementById("netflixModal");
-  const video = document.getElementById("modalVideo");
-
-  document.getElementById("modalTitle").textContent = title;
-  document.getElementById("modalDesc").textContent = desc;
-
-  video.src = trailer;
-  video.currentTime = 0;
-  video.play().catch(()=>{});
-
-  modal.classList.add("active");
-  document.body.style.overflow = "hidden";
-}
-
-function closeModal(){
-  const modal = document.getElementById("netflixModal");
-  const video = document.getElementById("modalVideo");
-
-  video.pause();
-  video.src = "";
-
-  modal.classList.remove("active");
-  document.body.style.overflow = "";
-}
-
-/* fecha clicando fora */
-document.getElementById("netflixModal").addEventListener("click", e=>{
-  if(e.target.id === "netflixModal") closeModal();
-});
-  /* 🚫 BLOQUEIA updateBanner para cliques em cards */
-document.querySelectorAll('.card-container, .game-card').forEach(card => {
-  card.onclick = null;
-});
-  /* ✅ TODOS os cards agora abrem o modal Netflix */
-document.querySelectorAll('.card-container, .game-card').forEach(card => {
-  card.addEventListener('click', () => {
-    openModal(
-      'Jogo Gameflix',
-      'Assista ao trailer completo e veja detalhes deste jogo.',
-      'https://res.cloudinary.com/dlt1gqwnc/video/upload/v1771613996/farcry_z2rivm.mp4'
-    );
-  });
-});
-</script>
+</script> 
 <!-- MODAL NETFLIX -->
 <div class="netflix-modal" id="netflixModal">
   <div class="modal-content">
@@ -464,54 +511,38 @@ document.querySelectorAll('.card-container, .game-card').forEach(card => {
     </div>
   </div>
 </div>
+  <script>
 
-<script>
-/* ================================
-   MODAL NETFLIX (FINAL)
-================================ */
+}
 
-function openModal(title, desc, trailer){
-  const modal = document.getElementById("netflixModal");
-  const video = document.getElementById("modalVideo");
-
-  document.getElementById("modalTitle").textContent = title;
-  document.getElementById("modalDesc").textContent = desc;
-
-  video.src = trailer;
-  video.currentTime = 0;
-  video.play().catch(()=>{});
-
-  modal.classList.add("active");
-  document.body.style.overflow = "hidden";
+function openModal(title,desc,trailer){
+  const m=document.getElementById("netflixModal");
+  const v=document.getElementById("modalVideo");
+  document.getElementById("modalTitle").textContent=title;
+  document.getElementById("modalDesc").textContent=desc;
+  v.src=trailer;
+  v.currentTime=0;
+  v.play().catch(()=>{});
+  m.classList.add("active");
+  document.body.style.overflow="hidden";
 }
 
 function closeModal(){
-  const modal = document.getElementById("netflixModal");
-  const video = document.getElementById("modalVideo");
-
-  video.pause();
-  video.src = "";
-  modal.classList.remove("active");
-  document.body.style.overflow = "";
+  const m=document.getElementById("netflixModal");
+  const v=document.getElementById("modalVideo");
+  v.pause();
+  v.src="";
+  m.classList.remove("active");
+  document.body.style.overflow="";
 }
 
-/* fecha clicando fora */
-document.getElementById("netflixModal").addEventListener("click", e=>{
-  if(e.target.id === "netflixModal") closeModal();
+document.getElementById("netflixModal").addEventListener("click",e=>{
+  if(e.target.id==="netflixModal") closeModal();
 });
 
-/* ================================
-   CORREÇÃO DEFINITIVA DOS CARDS
-================================ */
-
-/* remove qualquer onclick antigo */
-document.querySelectorAll(".card-container, .game-card").forEach(card=>{
+document.querySelectorAll(".card-container,.game-card").forEach(card=>{
   card.removeAttribute("onclick");
-});
-
-/* adiciona comportamento Netflix */
-document.querySelectorAll(".card-container, .game-card").forEach(card=>{
-  card.addEventListener("click", ()=>{
+  card.addEventListener("click",()=>{
     openModal(
       "Jogo Gameflix",
       "Assista ao trailer completo e veja detalhes deste jogo.",
@@ -520,9 +551,9 @@ document.querySelectorAll(".card-container, .game-card").forEach(card=>{
   });
 });
 </script>
-
 </body>
 </html>
+
 
 
 
