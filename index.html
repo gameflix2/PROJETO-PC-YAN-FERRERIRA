@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Gameflix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="pinning-header" id="header">
+    <div class="main-header"> 
+      <a href="#" class="logo">GAMEFLIX</a>
+      <ul class="nav-links">
+        <li><a href="#">Início</a></li>
+        <li><a href="#">FPS</a></li>
+        <li><a href="#">RPG</a></li>
+        <li><a href="#">CORRIDA</a></li>
+        <li><a href="#">MEUS JOGOS</a></li>
+      </ul>
+      <div class="header-actions">
+        <button style="font-size: 20px;">🔍</button>
+        <button style="font-size: 20px;">🔔</button>
+        <img class="profile" src="https://shopinfo.vteximg.com.br/arquivos/ids/1722843-1000-1000/1.png?v=638999311948470000" alt="Perfil">
+      </div>
+    </div>
+  </header>
+
+  <section class="banner" id="main-banner">
+    <video class="banner-video" autoplay muted loop playsinline id="banner-video">
+      <source src="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1771613996/farcry_z2rivm.mp4" type="video/mp4">
+    </video>
+
+    <div class="banner-content">
+      <h1 id="banner-title">FarCry Primal</h1>
+      <p id="banner-desc">Jogo disponível GRATIS para testar a plataforma</p>
+      <a href="https://drive.google.com/uc?export=download&id=1jCvhMNka9U0hJv2NqioXyS3xWGLbI9nQ" download>
+        <button class="btn-play">▶ DOWNLOAD GRATIS</button>
+      </a>
+      <button class="btn-info">ⓘ Mais informações</button>
+    </div>
+  </section>
+<div class="row" style="margin-top: 80px;">
+  <h2>JOGOS GRÁTIS GAMEFLIX</h2>
+  <div class="games-scroll">
+    <img class="game-card free-game-trigger" 
+         src="https://i.pinimg.com/736x/56/2e/31/562e311c3db929a33e6919832120b6c7.jpg" 
+         data-title="ELDEN RING" 
+         data-desc="Elden Ring é um RPG de ação em mundo aberto famoso pela alta dificuldade , chefes épicos e exploração livre.."
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772073320/ELDEN_yfkx0p.mp4"
+         data-link="LINK_DOWNLOAD_1">
+    
+    <img class="game-card free-game-trigger" 
+         src="https://images.squarespace-cdn.com/content/v1/58bedb0ab3db2bd0463e552b/1488928090199-81WOQR4N03UFM3MBW3OQ/BLOG_FARCRY_1280X788_001A.jpg?format=1500w" 
+         data-title="FarCry Primal" 
+         data-desc="Far Cry Primal é um jogo de ação e aventura em mundo aberto que leva a fórmula da série para a Idade da Pedra."
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1771613996/farcry_z2rivm.mp4"
+         data-link="LINK_DOWNLOAD_2">
+
+         <img class="game-card free-game-trigger" 
+     src="https://http2.mlstatic.com/D_NQ_NP_736664-MLB83977716034_052025-O.webp" 
+     data-title="171 GTA NO BRASIL" 
+     data-desc="O 171 é um jogo de ação e aventura em mundo aberto, frequentemente chamado de GTA brasileiro"
+     data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772074760/171_dhtpxl.mp4"
+     data-link="LINK_DE_DOWNLOAD_AQUI">
+
+    <img class="game-card free-game-trigger" 
+         src="https://upload.wikimedia.org/wikipedia/pt/a/ac/Assassins_Creed_2_capa.png?20200509195323" 
+         data-title="Assassin's Creed II" 
+         data-desc="Assassin's Creed II é amplamente considerado o melhor capítulo da franquia, apresentando o icônico protagonista Ezio Auditore da Firenze durante o Renascimento Italiano."
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772073903/ASSASINE_hevxey.mp4"
+         data-link="LINK_DOWNLOAD_3">
+
+  </div>
+</div>
+  <div class="top10-banner">
+    <img src="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1771951448/Banner_Horizontal_Black_Friday_Vibrante_Preto_e_Vermelho_2_lhgsn0.png" alt="Banner Top 10">
+  </div>
+
+  <div class="row">
+    <h2>VEJA A LISTA DOS TOP 10 JOGOS DA GAMEFLIX</h2>
+
+    <div class="top-10-container">
+      <button class="arrow-left" onclick="scrollLeft()">‹</button>
+
+      <div class="top-10-scroll" id="top10">
+        <div class="card-container" onclick="openModal('Red Dead Redemption 2', 'Arthur Morgan e a gangue Van der Linde são forçados a fugir pelo coração da América.', 'eaW0tYpxsp4')">
+          <span class="rank-number">1</span>
+          <img src="https://upload.wikimedia.org/wikipedia/pt/e/e7/Red_Dead_Redemption_2.png" class="poster-img" alt="Capa">
+          <div class="badge-new">Novidade</div>
+        </div>
+        
+        <div class="card-container" onclick="openModal('God of War Ragnarok', 'Kratos e Atreus enfrentam o fim do mundo nórdico nesta aventura brutal e épica.', 'hfJ4Km46A-0')">
+          <span class="rank-number">2</span>
+          <img src="https://gmedia.playstation.com/is/image/SIEPDC/god-of-war-ragnarok-store-art-01-10sep21$ru?$800px--t$" class="poster-img" alt="Capa">
+          <div class="badge-new">Novidade</div>
+        </div>
+        
+        <div class="card-container" onclick="openModal('FIFA 26', 'A nova geração do futebol virtual, com gráficos realistas e jogabilidade aprimorada.', 'pBNguPszRSk')">
+          <span class="rank-number">3</span>
+         <img src="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1771886278/Captura_de_tela_2026-02-23_185713_cljm2d.png" class="poster-img" alt="Capa">
+          <div class="badge-new">Novidade</div>
+        </div>
+        
+        <div class="card-container" onclick="openModal('Forza Horizon 6', 'Corridas alucinantes no mundo aberto mais detalhado e veloz da franquia.', 'FYH9n37B7Yw')">
+          <span class="rank-number">4</span>
+          <img src="https://azitech.com.br/wp-content/uploads/2024/08/Forza-Horizon-6-lancamento.jpg" class="poster-img" alt="Capa">
+          <div class="badge-new">Novidade</div>
+        </div>
+        
+        <div class="card-container" onclick="openModal('Battlefield 6', 'Guerra em escala monumental. Destruição dinâmica e combate tático impressionante.', 'ASzOzrB-a9E')">
+          <span class="rank-number">5</span>
+          <img src="https://cdn1.epicgames.com/offer/a14a02aa3c8143729605eaf7c93d7501/EGS_Battlefield6_BattlefieldStudios_S2_1200x1600-a88625a836120c55650c83d17a010c25" class="poster-img" alt="Capa">
+          <div class="badge-new">Novidade</div>
+        </div>
+        
+        <div class="card-container" onclick="openModal('Uncharted: Legacy of Thieves', 'Busque seu legado e deixe sua marca no mapa com as aventuras de Nathan Drake.', 'mIfOMhRkpe4')">
+          <span class="rank-number">6</span>
+          <img src="https://cdn1.epicgames.com/offer/8b2d6cf2b45b41f1abe91bc5b7c1e8f9/EGS_UNCHARTEDLegacyofThievesCollection_NaughtyDogLLC_S2_1200x1600-9deaa177d8716bde5478cdd75d850c9c" class="poster-img" alt="Capa">
+          <div class="badge-new">2 em 1</div>
+        </div>
+        
+        <div class="card-container" onclick="openModal('Call of Duty: MW2 Remastered', 'Reviva a campanha épica e cinematográfica de um dos jogos de tiro mais aclamados.', 'E5xszHhM0mw')">
+          <span class="rank-number">7</span>
+          <img src="https://image.api.playstation.com/vulcan/img/rnd/202008/1301/raryqz0xAsk3HutslehRAW4A.png" class="poster-img" alt="Capa">
+          <div class="badge-new">Novidade</div>
+        </div>
+        
+        <div class="card-container" onclick="openModal('Grand Theft Auto V', 'Explore a metrópole de Los Santos na pele de três criminosos em busca do grande golpe.', 'QkkoHAzjnUs')">
+          <span class="rank-number">8</span>
+          <img src="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png" class="poster-img" alt="Capa">
+        </div>
+        
+        <div class="card-container" onclick="openModal('Spider-Man 2', 'Peter Parker e Miles Morales enfrentam Venom e Kraven na maior aventura do Cabeça de Teia.', 'bgqGdIoa52s')">
+          <span class="rank-number">9</span>
+          <img src="https://cdn1.epicgames.com/offer/b2818b59c0bb420e9647983dfd254931/EGS_MarvelsSpiderManDigitalDeluxeEdition_InsomniacGamesNixxesSoftware_Editions_S2_1200x1600-148e0014e79aa7c2cb23ae2414b11a16" class="poster-img" alt="Capa">
+          <div class="badge-new">Novidade</div>
+        </div>
+        
+        <div class="card-container" onclick="openModal('The Last of Us Part II', 'Acompanhe a jornada brutal e emocionante de Ellie em busca de vingança.', 'vhII1qlcZ4E')">
+          <span class="rank-number">10</span>
+          <img src="https://m.media-amazon.com/images/M/MV5BODIwYWZmYWMtYTliNC00YWQ5LTg5ZmEtNTZhNmUxNjdiMzNiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" class="poster-img" alt="Capa">
+          <div class="badge-new">Novidade</div>
+        </div>
+      </div> 
+
+      <div class="faixa-destaque">
+        LEVE ESSES 10 ÍCONES DO MUNDO DOS GAMES DE R$149,00 por APENAS R$49,90 (OFERTA DE LANÇAMENTO)
+      </div>
+      <button class="arrow-right" onclick="scrollRight()">›</button>
+    </div>
+
+    <div class="floating-btn-container">
+      <button class="netflix-btn">COMPRAR AGORA</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <h2>PACOTE PREMIUM GAMEFLIX</h2>
+    <div class="games-scroll">
+      <img class="game-card" src="https://image.api.playstation.com/vulcan/ap/rnd/202309/2015/a998402a21dbdc13ea5409aa27fbecc5234e5a7e6c6c4273.jpg" onclick="openModal('Horizon Forbidden West', 'Explore terras distantes e enfrente máquinas imponentes.', 'Lq594XpoENw')">
+      
+      <img class="game-card" src="https://img.elo7.com.br/product/main/494956D/quadro-decorativo-games-resident-evil-4-remake-games.jpg" onclick="openModal('Resident Evil 4', 'Sobreviva ao terror no vilarejo isolado e salve a filha do presidente.', 'j5Xv2lM9ses')">
+      
+      <img class="game-card" src="https://www.productsleutels.nl/wp-content/uploads/2021/01/Cyberpunk-2077-PC-COVER.jpg" onclick="openModal('Cyberpunk 2077', 'O futuro sombrio de Night City espera por você.', '8X2kIfS6fb8')">
+      
+      <img class="game-card" src="https://assets.xboxservices.com/assets/7b/54/7b54f5e4-0857-4ce3-8a18-2b8c431e8a9e.jpg?n=Elden-Ring_GLP-Page-Hero-0_1083x1222_01.jpg" onclick="openModal('Elden Ring', 'Erga-se, Maculado, e torne-se um Lorde Prístino nas Terras Intermédias.', 'AKXiKBnzpMs')">
+      
+      <img class="game-card" src="https://pixelstore.cl/cdn/shop/files/Disenosintitulo_25.png?v=1730762881" onclick="openModal('Mortal Kombat 11 Ultimate', 'A experiência de luta definitiva com um elenco insano de lutadores.', '7zwQPJEyKbc')">
+      
+      <img class="game-card" src="https://i.pinimg.com/736x/c6/bc/5f/c6bc5f1ff49914bba3a0ac4f9feca1b5.jpg" onclick="openModal('Days Gone', 'Pilote sua moto e sobreviva a hordas de infectados em um mundo implacável.', 'vdWE5qE4xkg')">
+      
+      <img class="game-card" src="https://bdjogos.com.br/capas/24175-call-of-duty-black-ops-6-capa-1.webp" onclick="openModal('Call of Duty: Black Ops 6', 'A nova era do combate secreto e missões táticas intensas.', 'Q_j8BqGqfF0')">
+      
+      <img class="game-card" src="https://static.posters.cz/image/750/116582.jpg" onclick="openModal('God of War', 'Kratos recomeça sua vida nas terras gélidas dos deuses nórdicos.', 'K0u_kAWLJOA')">
+      
+      <img class="game-card" src="https://bdjogos.com.br/capas/6265-the-witcher-3-wild-hunt-capa-1.jpg" onclick="openModal('The Witcher 3: Wild Hunt', 'Assuma o papel do bruxo Geralt em sua maior e mais perigosa caçada.', 'c0i88t0Kacs')">
+      
+      <img class="game-card" src="https://image.api.playstation.com/cdn/HP0700/CUSA03434_00/9Lvijwqww6gvFTsciIzMWqs61DlOg8xIAsomficGKF6g7z6bYgrYGAoG80gr87pw.png" onclick="openModal('Dark Souls III', 'Enfrente desafios colossais e teste seus limites neste RPG clássico.', '_zDZYrIUgKE')">
+
+      <img class="game-card" src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/07/Capa-completa-EA-Sports-FC-26.jpg?w=849&h=477&crop=0" onclick="openModal('FIFA 26', 'A emoção dos gramados direto na sua tela.', 'pBNguPszRSk')">
+      
+      <img class="game-card" src="https://upload.wikimedia.org/wikipedia/pt/e/e7/Red_Dead_Redemption_2.png" onclick="openModal('Red Dead Redemption 2', 'A lenda do oeste nunca morre. Reviva a glória e a queda dos foras da lei.', 'eaW0tYpxsp4')">
+      
+      <img class="game-card" src="https://image.api.playstation.com/vulcan/ap/rnd/202109/1321/3mjMyRiJaq8lw1EFWiTCUJRV.png" onclick="openModal('Gran Turismo 7', 'Acelere nos carros mais impressionantes do mundo em pistas icônicas.', '1tBUsXIkG1A')">
+      
+      <img class="game-card" src="https://m.media-amazon.com/images/M/MV5BODIwYWZmYWMtYTliNC00YWQ5LTg5ZmEtNTZhNmUxNjdiMzNiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" onclick="openModal('The Last of Us Part II', 'Cada ação tem uma consequência. Descubra até onde Ellie é capaz de ir.', 'vhII1qlcZ4E')">
+      
+      <img class="game-card" src="https://media.rockstargames.com/rockstargames/img/global/news/upload/actual_1421771177.jpg" onclick="openModal('GTA 5', 'Domine as ruas de Los Santos e Blaine County.', 'QkkoHAzjnUs')">
+      
+      <img class="game-card" src="https://image.api.playstation.com/vulcan/ap/rnd/202111/2001/9Vdas199J3tqxTIBWGijbpjW.png?w=1024&thumb=false" onclick="openModal('Uncharted: Digital Bundle', 'Prepare-se para revirar o mundo em busca de fortunas incalculáveis.', 'mIfOMhRkpe4')">
+      
+      <img class="game-card" src="https://meups.com.br/wp-content/uploads/2025/10/Battlefield-6-REVIEW-PS5-scaled.jpg" onclick="openModal('Battlefield 6', 'Entre no campo de batalha e vivencie o caos em larga escala.', 'ASzOzrB-a9E')">
+      
+      <img class="game-card" src="https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000089518/cc83ebef3be669c8fcc66f9c53e3c6e6dabf5cbc44947c9e1c7e5febeb254ee6" onclick="openModal('Bodycam', 'Tiroteios táticos incrivelmente imersivos e viscerais.', 'v4Z9-G-tB54')">
+      
+      <img class="game-card" src="https://azitech.com.br/wp-content/uploads/2024/08/Forza-Horizon-6-lancamento.jpg" onclick="openModal('Forza Horizon 6', 'Sinta o vento e a adrenalina dos supercarros mais velozes do mundo.', 'FYH9n37B7Yw')">
+      
+      <img class="game-card" src="https://cdn1.epicgames.com/offer/6e6aa039c73347b885803de65ac5d3db/EGS_GhostofTsushima_SuckerPunchProductions_S2_1200x1600-e23e02c1d70be7b528dba50860f87d39" onclick="openModal('Ghost of Tsushima', 'Abrace o caminho do Fantasma e liberte a ilha de Tsushima.', 'Zbq7BnsQhrw')">
+      
+      <div class="faixa-destaque" style="width: 100%; margin-top: 20px;">
+        ADIQUIRA ESSE MEGA PACK DE GAMES DE 449,00 por 149,90 (OFERTA DE LANÇAMENTO)
+      </div>
+    </div>
+
+    <div class="floating-btn-container">
+      <button class="netflix-btn">COMPRAR AGORA</button>
+    </div>
+  </div>
+
+  <div class="netflix-modal" id="netflixModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">×</span>
+      <iframe id="modalVideo" class="modal-video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <div class="modal-info">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
