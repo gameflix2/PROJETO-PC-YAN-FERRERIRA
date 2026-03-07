@@ -7,46 +7,139 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { --primary-red: #e50914; --bg-black: #000000; }
-        body, html { margin: 0; padding: 0; width: 100%; background-color: var(--bg-black); font-family: 'Roboto', sans-serif; color: #fff; display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
-        .container { max-width: 850px; width: 95%; text-align: center; padding: 50px 0; }
-        .headline { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; line-height: 1.1; margin-bottom: 35px; color: #ffffff; }
+        
+        body, html { 
+            margin: 0; padding: 0; width: 100%; 
+            background-color: var(--bg-black); 
+            font-family: 'Roboto', sans-serif; 
+            color: #fff; 
+            display: flex; flex-direction: column; align-items: center; 
+            overflow-x: hidden; 
+        }
+
+        .container { 
+            max-width: 850px; 
+            width: 90%; 
+            text-align: center; 
+            padding: 30px 0; 
+        }
+        
+        /* Headline Responsiva */
+        .headline { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 2.8rem; 
+            line-height: 1.1; 
+            margin-bottom: 25px; 
+            color: #ffffff; 
+            text-transform: uppercase;
+        }
         .headline span { color: var(--primary-red); }
-        .video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #111; border-radius: 12px; box-shadow: 0 0 50px rgba(229, 9, 20, 0.25); overflow: hidden; border: 1px solid #333; }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; z-index: 1; }
-        .video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; cursor: pointer; background: transparent; }
-        #cta-container { margin-top: 45px; display: none; animation: surge 0.8s ease-out; }
-        .netflix-btn { display: inline-block; padding: 22px 50px; font-size: 24px; font-weight: bold; text-transform: uppercase; color: #fff; background: linear-gradient(90deg, #e50914, #ff3b3b); border: none; border-radius: 5px; text-decoration: none; box-shadow: 0 0 20px #e50914, 0 0 40px #ff3b3b; animation: float 2.5s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        @keyframes surge { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-        @media (max-width: 768px) { .headline { font-size: 1.8rem; } .netflix-btn { padding: 18px 30px; font-size: 18px; width: 90%; } }
+
+        /* Player Blindado Adaptável */
+        .video-wrapper { 
+            position: relative; 
+            width: 100%; 
+            padding-bottom: 56.25%; 
+            background: #111; 
+            border-radius: 8px; 
+            box-shadow: 0 0 40px rgba(229, 9, 20, 0.2); 
+            overflow: hidden; 
+            border: 1px solid #222; 
+        }
+        .video-wrapper iframe { 
+            position: absolute; top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            border: none; z-index: 1; 
+        }
+        .video-overlay { 
+            position: absolute; top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            z-index: 10; cursor: pointer; 
+        }
+
+        /* Botão Estilo GAMEFLIX Otimizado */
+        #cta-container { 
+            margin-top: 35px; 
+            display: none; 
+            width: 100%;
+            animation: surge 0.8s ease-out; 
+        }
+        .netflix-btn { 
+            display: inline-block; 
+            padding: 20px 0; 
+            width: 100%; /* No mobile ocupa a largura toda */
+            max-width: 500px;
+            font-size: 22px; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            color: #fff; 
+            background: linear-gradient(90deg, #e50914, #ff3b3b); 
+            border: none; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            box-shadow: 0 0 20px #e50914, 0 0 40px #ff3b3b; 
+            animation: float 2.5s ease-in-out infinite; 
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes surge { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        /* Ajustes específicos para Celular */
+        @media (max-width: 600px) {
+            .container { padding: 20px 0; }
+            .headline { font-size: 1.8rem; margin-bottom: 20px; }
+            .netflix-btn { font-size: 18px; padding: 18px 0; }
+            .video-wrapper { border-radius: 4px; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1 class="headline">ESTE MÉTODO LIBERA MAIS DE 40 JOGOS <span>PREMIUM</span> NO SEU PC HOJE</h1>
+        
         <div class="video-wrapper">
             <div class="video-overlay" onclick="togglePlay()"></div>
             <div id="player"></div>
         </div>
+
         <div id="cta-container">
             <a href="http://www.gameflixoficial.com.br/" class="netflix-btn">VEJA NOSSOS PLANOS</a>
         </div>
     </div>
+
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         const VIDEO_ID = 'ASzOzrB-a9E'; 
-        const DELAY = 10000; 
+        const DELAY = 10000; // 10 segundos para aparecer
         var player;
+
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
                 height: '100%', width: '100%', videoId: VIDEO_ID,
-                playerVars: { 'autoplay': 1, 'controls': 0, 'disablekb': 1, 'rel': 0, 'modestbranding': 1, 'mute': 1 },
-                events: { 'onStateChange': (e) => { if(e.data == 1) setTimeout(() => { document.getElementById('cta-container').style.display = 'block'; }, DELAY); } }
+                playerVars: { 
+                    'autoplay': 1, 'controls': 0, 'disablekb': 1, 
+                    'rel': 0, 'modestbranding': 1, 'mute': 1,
+                    'origin': window.location.origin 
+                },
+                events: { 
+                    'onStateChange': (e) => { 
+                        if(e.data == 1) { // Quando o vídeo der o play
+                            setTimeout(() => { 
+                                document.getElementById('cta-container').style.display = 'block'; 
+                            }, DELAY); 
+                        } 
+                    } 
+                }
             });
         }
+
         function togglePlay() { 
-            if (player.getPlayerState() == 1) { player.pauseVideo(); } 
-            else { player.unMute(); player.playVideo(); } 
+            if (player.getPlayerState() == 1) { 
+                player.pauseVideo(); 
+            } else { 
+                player.unMute(); 
+                player.playVideo(); 
+            } 
         }
     </script>
 </body>
