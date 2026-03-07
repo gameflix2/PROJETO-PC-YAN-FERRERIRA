@@ -8,14 +8,17 @@
     <style>
         :root { --primary-red: #e50914; --bg-black: #000000; }
         
+        /* AJUSTE PARA CENTRALIZAÇÃO VERTICAL E HORIZONTAL */
         body, html { 
-            margin: 0; padding: 0; width: 100%; 
+            margin: 0; padding: 0; 
+            width: 100%; 
+            height: 100%; /* Ocupa a altura toda da tela */
             background-color: var(--bg-black); 
             font-family: 'Roboto', sans-serif; 
             color: #fff; 
             display: flex; 
             justify-content: center; /* Centraliza horizontalmente */
-            align-items: flex-start; 
+            align-items: center;     /* Centraliza verticalmente (O QUE FALTOU) */
             overflow-x: hidden; 
         }
 
@@ -24,12 +27,11 @@
             width: 90%; 
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centraliza Headline, Vídeo e Botão */
+            align-items: center; 
             text-align: center; 
-            padding: 40px 0; 
+            padding: 20px 0; 
         }
         
-        /* Headline Centralizada */
         .headline { 
             font-family: 'Bebas Neue', sans-serif; 
             font-size: 2.8rem; 
@@ -37,15 +39,13 @@
             margin-bottom: 25px; 
             color: #ffffff; 
             text-transform: uppercase;
-            width: 100%;
         }
         .headline span { color: var(--primary-red); }
 
-        /* Player Wrapper Centralizado */
         .video-wrapper { 
             position: relative; 
             width: 100%; 
-            max-width: 750px; /* Limita largura no PC para não ficar gigante */
+            max-width: 750px; 
             padding-bottom: 56.25%; 
             background: #111; 
             border-radius: 8px; 
@@ -53,79 +53,36 @@
             overflow: hidden; 
             border: 1px solid #222; 
         }
-        .video-wrapper iframe { 
-            position: absolute; top: 0; left: 0; 
-            width: 100%; height: 100%; 
-            border: none; z-index: 1; 
-        }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; z-index: 1; }
 
-        /* Overlay de Som */
         .video-overlay { 
-            position: absolute; top: 0; left: 0; 
-            width: 100%; height: 100%; 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
             z-index: 10; cursor: pointer; 
             background: rgba(0,0,0,0.7);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: 0.5s;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
 
-        .audio-icon {
-            width: 60px;
-            margin-bottom: 15px;
-            animation: pulse 1.5s infinite;
-        }
+        .audio-icon { width: 60px; margin-bottom: 15px; animation: pulse 1.5s infinite; }
+        .overlay-text { font-family: 'Bebas Neue', sans-serif; font-size: 22px; background: var(--primary-red); padding: 12px 24px; border-radius: 4px; animation: pulse 1.5s infinite; }
 
-        .overlay-text {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
-            background: var(--primary-red);
-            padding: 12px 24px;
-            border-radius: 4px;
-            color: white;
-            animation: pulse 1.5s infinite;
-        }
-
-        /* Botão Gameflix Centralizado */
-        #cta-container { 
-            margin-top: 40px; 
-            display: none; 
-            width: 100%;
-            animation: surge 0.8s ease-out; 
-        }
+        #cta-container { margin-top: 40px; display: none; width: 100%; animation: surge 0.8s ease-out; }
         .netflix-btn { 
-            display: inline-block; 
-            padding: 20px 0; 
-            width: 100%; 
-            max-width: 450px; /* Centralizado e com limite de largura */
-            font-size: 22px; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            color: #fff; 
-            background: linear-gradient(90deg, #e50914, #ff3b3b); 
-            border: none; 
-            border-radius: 5px; 
-            text-decoration: none; 
-            box-shadow: 0 0 20px #e50914, 0 0 40px #ff3b3b; 
-            animation: float 2.5s ease-in-out infinite; 
+            display: inline-block; padding: 20px 0; width: 100%; max-width: 450px;
+            font-size: 22px; font-weight: bold; text-transform: uppercase; 
+            color: #fff; background: linear-gradient(90deg, #e50914, #ff3b3b); 
+            border: none; border-radius: 5px; text-decoration: none; 
+            box-shadow: 0 0 20px #e50914, 0 0 40px #ff3b3b; animation: float 2.5s ease-in-out infinite; 
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.9; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.9; } 100% { transform: scale(1); opacity: 1; } }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
         @keyframes surge { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-        /* Mobile */
         @media (max-width: 600px) {
-            .container { padding: 25px 0; width: 92%; }
+            body, html { align-items: center; } /* Garante centro no mobile */
+            .container { width: 92%; }
             .headline { font-size: 1.8rem; }
-            .netflix-btn { font-size: 19px; width: 100%; }
+            .netflix-btn { font-size: 19px; }
         }
     </style>
 </head>
@@ -151,14 +108,12 @@
         const VIDEO_ID = 'ASzOzrB-a9E'; 
         const DELAY = 10000; 
         var player;
-
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
                 height: '100%', width: '100%', videoId: VIDEO_ID,
                 playerVars: { 'autoplay': 1, 'controls': 0, 'rel': 0, 'modestbranding': 1, 'mute': 1 }
             });
         }
-
         function startVideo() {
             document.getElementById('overlay').style.display = 'none';
             player.unMute();
